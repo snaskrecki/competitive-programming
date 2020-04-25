@@ -2,7 +2,7 @@
 # ogolny makefile do kompilowania programow
 #
 CXX 	= g++
-RM 		= rm -f
+RM 	= rm -f
 GCC_OPT = -std=c++17 -pedantic -Wall -Wextra -Werror -fstack-protector-strong -g
 
 PRG_CXX = $(wildcard *.cpp) 
