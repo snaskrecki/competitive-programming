@@ -2,7 +2,7 @@
 
 # no args must be equal 4
 if [ $# -ne 4 ]; then
-    printf "need 4 args:\n";
+    printf "Usage:\n";
     printf "  directory\n";
     printf "  build/don't\n";
     printf "  make/cmake\n";

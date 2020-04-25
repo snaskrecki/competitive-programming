@@ -1,20 +1,4 @@
-// #include <bits/stdc++.h>
-#include <cstdio>
-#include <iostream>
-#include <algorithm>
-#include <string>
-#include <vector>
-#include <complex>
-#include <iterator>
-#include <set>
-#include <bitset>
-#include <map>
-#include <stack>
-#include <list>
-#include <queue>
-#include <deque>
-#include <cmath>
-#include <cassert>
+#include <bits/stdc++.h>
 
 #define FOR(x, b, e) \
     for (int x = b; x <= (int)(e); ++x)
@@ -54,10 +38,10 @@ using PII = pair<int, int>;
 using VPII = vector<PII>;
 
 int main() {
-	std::ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	
-	cout << "Hello, World\n";
+    std::ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-	return 0;
+    cout << "Hello, World\n";
+
+    return 0;
 }
