@@ -32,7 +32,13 @@ using vs                    = vector<string>;
 const int inf               = 1e9 + 1;
 const double eps            = 10e-9;
 
-// int main() {
-//   printf("hello, world\n");
-//   return 0;
-// }
+int main() {
+  int n;
+  scanf("%d", &n);
+  int a, b;
+  while (n--) {
+    scanf("%d %d", &a, &b);
+    printf("%d\n", a + b);
+  }
+  return 0;
+}
