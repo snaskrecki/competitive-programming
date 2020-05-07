@@ -1,22 +1,49 @@
 #
 # ogolny makefile do kompilowania programow
 #
+
+IDIR	= ./include
+SDIR 	= ./src
+ODIR 	= ./obj
+EDIR 	= ./exe
+LDIR 	= ./lib
+
+LIBS	= -lm
+
+RM 	    = rm -f
+
 CXX 	= g++
-RM 	= rm -f
-GCC_OPT = -std=c++17 -pedantic -Wall -Wextra -Werror -fstack-protector-strong -g
+CXXFLAGS= -std=c++17 -pedantic -Wall -Wextra -Werror -fstack-protector-strong -g -I${IDIR}
 
-PRG_CXX = $(wildcard *.cpp) 
-PRG     = $(PRG_CXX)
+_DEPS 	= competitive.h
+DEPS 	= $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-EXE_CXX = $(patsubst %.cpp,%,$(PRG_CXX))
-EXE     = $(EXE_CXX)
+_PRG 	= main.cpp
+PRG     = $(wildcard ${SDIR}/*.cpp)
+
+_OBJ 	= main.o
+OBJ 	= $(patsubst %,$(ODIR)/%,$(_OBJ))
+
+_EXE	= main
+EXE     = $(patsubst ${SDIR}/%.cpp,${EDIR}/%,$(PRG))
+
+.PHONY: all clean
 
 all: $(EXE)
 
-%: %.cpp
-	$(CXX) $(GCC_OPT) $^ -o $*
+showobjects:
+	@echo ${DEPS}
+	@echo ${PRG}
+	@echo ${OBJ}
+	@echo ${EXE}
+
+main: main.o
+	$(CXX) -o ${EDIR}/$@ $^ $(CXXFLAGS)
+
+main.o: ./src/main.cpp ./include/competitive.h
+	$(CC) -c -o $@ $< $(CXXFLAGS)
 
 mrproper: clean
 
 clean:
-	$(RM) $(EXE) *.o *~
+	$(RM) ${EDIR}/* ${ODIR}/*.o ${SDIR}/*~
