@@ -1,2 +1,1 @@
-# Competitive
-cp problem project structure
+# competitive-programming
