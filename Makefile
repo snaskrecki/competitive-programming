@@ -6,10 +6,12 @@ CFLAGS = -g -pedantic -Wextra -Wall -Werror -Wshadow -fstack-protector-strong -s
 
 .PHONY: all clean
 
-all: temp
+all: main
 
 %: %.cpp
 	$(CC) -o $@ $< $(CFLAGS)
 
 clean: 
-	rm -f temp *.o
+	rm -f *.o
+	rm -f main
+	rm -rf results
