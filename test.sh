@@ -3,6 +3,7 @@
 if [ $# -gt 3 ]
 then
     printf "Usage: ${0} [prog] [tests] [results]\n"
+    exit 1
 fi
 
 prog="main"
@@ -27,5 +28,5 @@ for file in ${test_dir}/input*.txt
 do
     result=${file##*/}
     result=${result_dir}/${result/input/result}
-    ./${prog} < ${file} | tee ${result} | diff - ${file/input/output}
+    ./${prog} < ${file} | tee ${result} | diff -q - ${file/input/output}
 done

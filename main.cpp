@@ -1,64 +1,75 @@
 #include <bits/stdc++.h>
 
-#define REP(i, a, b) for (int i = int(a); i <= int(b); ++i)
+#define FOR0(i, n) for(int i = 0; i < int(n); ++i)
+#define FOR1(i, n) for(int i = 1; i <= int(n); ++i)
+#define REP(i, a, b) for(int i = int(a); i <= int(b); ++i)
+#define FORD(i, n) for(int i = int(n) - 1; i >= 0; --i)
 #define SZ(x) int((x).size())
 #define VAR(v, n) __typeof(n) v = (n)
 #define TR(c, i) for (VAR(i, (c).begin()); i != (c).end(); ++i)
 #define ALL(c) (c).begin(), (c).end()
+#define RALL(c) (c).rbegin(), (c).rend()
 #define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
 #define PRESENT(c, x) ((c).find(x) != (c).end())
 #define CPRESENT(c, x) (find(ALL(c), x) != (c).end())
 #define MP make_pair
 #define PB push_back
 #define PF push_front
-#define ST first
-#define ND second
-#define LENGTH 1000001
+#define X first
+#define Y second
 
 using namespace std;
 
-typedef pair<int, int> ii;
-typedef vector<int> vi;
-typedef vector<ii> vii;
-typedef vector<vi> vvi;
 typedef long long ll;
+typedef unsigned long long ull;
+typedef long double ld;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef pair<double, double> pdd;
+typedef vector<int> vi;
 typedef vector<ll> vll;
-typedef vector<vll> vvll;
-typedef vector<ii> vii;
-typedef vector<vii> vvii;
 typedef vector<double> vd;
-typedef vector<vd> vvd;
 typedef vector<string> vs;
+typedef vector<pii> vpii;
+typedef vector<vi> vvi;
+typedef vector<vll> vvll;
+typedef vector<vd> vvd;
 typedef vector<vs> vvs;
+typedef vector<vpii> vvpii;
 typedef map<string, int> msi;
+typedef map<string, string> mss;
 
-const int inf = 1e9 + 1;
-const double eps = 10e-9;
-const int mod = 1e9 + 7;
-
-int n;
-vector<int> V;
+const int INF = (int) 1E9 + 7;
+const ld EPS = 10E-9;
+const ld PI = 2 * acos(0.0);
 
 void solve() {
+    int n;
     cin >> n;
-    REP(i, 0, n - 1) {
-        int a;
-        cin >> a;
-        V.PB(a);
-    }
-    auto result = minmax_element(V.begin(), V.begin() + n);
-    int smallest = *result.ST;
-    int greatest = *result.ND;
-    //printf("smallest is %d, greatest is %d\n", smallest, greatest);
-    int answer = greatest - smallest;
-    printf("%d\n", answer);
+
+    vector<string> v(n);
+    for (int i = 0; i < n; i++)
+        cin >> v[i];
+
+    int x = 0;
+
+    for (int i = 0; i < n; i++)
+        x += (v[i][1] == '-') ? -1 : +1;
+
+    cout << x << "\n";
 }
 
 int main() {
-    std::ios_base::sync_with_stdio(0);
-    std::cin.tie(0);
-  
+//#ifdef ONLINE_JUDGE
+//  freopen("file.in", "r", stdin);
+//  freopen("file.out", "w", stdout);
+//#endif
+
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    
     solve();
   
     return 0;
 }
+
