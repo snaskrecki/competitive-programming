@@ -24,9 +24,14 @@ then
     result_dir="$3"
 fi
 
-for file in ${test_dir}/input*.txt
+make -B all
+
+for input in $test_dir/*.in
 do
-    result=${file##*/}
-    result=${result_dir}/${result/input/result}
-    ./${prog} < ${file} | tee ${result} | diff -q - ${file/input/output}
+    echo "test: $input" 
+    result=$(echo $input | sed 's/\.in/\.res/')
+    result=$(echo $result | sed 's/tests/results/')
+    output=$(echo $input | sed 's/\.in/\.out/')
+    ./$prog <$input >$result
+    diff -q $result $output
 done
